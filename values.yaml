@@ -1,0 +1,36 @@
+namespaces:
+  - name: backend1
+    labels:
+      istio-injection: enabled
+    annotations:
+      network-type: mesh
+  - name: backend2
+    labels:
+      istio-injection: enabled
+    annotations:
+      network-type: mesh
+  - name: backend3
+    labels:
+      istio-injection: enabled
+    annotations:
+      network-type: mesh
+
+serviceAccounts:
+  - name: app-admin
+    namespace: backend1
+    roleBindings:
+      - namespace: backend1
+        kind: ClusterRole
+        name: app-admin
+  - name: app-admin
+    namespace: backend2
+    roleBindings:
+      - namespace: backend2
+        kind: ClusterRole
+        name: app-admin
+  - name: app-admin
+    namespace: backend3
+    roleBindings:
+      - namespace: backend3
+        kind: ClusterRole
+        name: app-admin
